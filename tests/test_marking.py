@@ -29,7 +29,10 @@ def test_expected_fail_passes_strict():
 
 @pytest.mark.slow
 def test_slow():
-    #py.test -s -v -m slow test_marking.py
+    pass
+
+@pytest.mark.reallyslow
+def test_really_slow():
     pass
 
 def test_skip_during_test():

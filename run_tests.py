@@ -23,6 +23,11 @@ def main():
                         help='Write test results xUnit XML')
     parser.add_argument('--collect', '-c', action='store_true', default=False,
                         help='Write collection tree.  Do not execute tests')
+    parser.add_argument('--markexp', '-m', help="Only run tests matching given mark expression \
+                         Ex. 'slow' \
+                         Ex. 'slow or reallyslow' \
+                         Ex. 'not slow'")
+
 
     args = parser.parse_args()
 
@@ -49,6 +54,9 @@ def main():
 
     if args.collect:
         cmd += ' --collect-only'
+
+    if args.markexp:
+        cmd += f" -m '{args.markexp}'"
 
     print(cmd)
 
