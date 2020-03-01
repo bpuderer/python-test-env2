@@ -17,9 +17,12 @@ def main():
                         Ex. tests/test_example.py::TestClass::test_within_class')
     parser.add_argument('--testenv', '-te', default='DEFAULT',
                         help='Case sensitive section in test_settings.cfg')
-    parser.add_argument('--summary', '-s', action='store_true', default=False, help='Display short test summary info')
-    parser.add_argument('--xml', action='store_true',
-                        default=False, help='Write test results xUnit XML')
+    parser.add_argument('--summary', '-s', action='store_true', default=False,
+                        help='Display short test summary info')
+    parser.add_argument('--xml', action='store_true', default=False,
+                        help='Write test results xUnit XML')
+    parser.add_argument('--collect', '-c', action='store_true', default=False,
+                        help='Write collection tree.  Do not execute tests')
 
     args = parser.parse_args()
 
@@ -32,7 +35,7 @@ def main():
         os.remove(f)
     for f in glob.glob('screenshots/*'):
         os.remove(f)
-    
+
     cmd = 'python -m pytest --capture=no'
 
     if args.tests:
@@ -43,6 +46,9 @@ def main():
 
     if args.xml:
         cmd += ' --junitxml=./reports/test_results.xml'
+
+    if args.collect:
+        cmd += ' --collect-only'
 
     print(cmd)
 
