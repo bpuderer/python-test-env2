@@ -25,7 +25,7 @@ def test_is_even1(test_data):
 
 
 # https://docs.pytest.org/en/latest/parametrize.html#parametrizing-fixtures-and-test-functions
-@pytest.mark.parametrize("test_input,expected", [
+@pytest.mark.parametrize("test_input, expected", [
                          (0, True),
                          (1, False),
                          (2, True),

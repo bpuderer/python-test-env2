@@ -18,7 +18,7 @@ def main():
     parser.add_argument('--testenv', '-te', default='DEFAULT',
                         help='Case sensitive section in test_settings.cfg')
     parser.add_argument('--summary', '-s', action='store_true', default=False,
-                        help='Display short test summary info')
+                        help='Display extra test summary info')
     parser.add_argument('--xml', action='store_true', default=False,
                         help='Write test results xUnit XML')
     parser.add_argument('--collect', '-c', action='store_true', default=False,
